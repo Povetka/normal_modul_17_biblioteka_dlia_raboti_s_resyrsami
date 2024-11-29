@@ -1,13 +1,17 @@
 from pydantic import BaseModel
 
 
-class Category(BaseModel):
-    id: int
+class CategoryBase(BaseModel):
     name: str
+    slug: str
+
+
+class CategoryCreate(CategoryBase):
+    pass  # Для создания категории
+
+
+class Category(CategoryBase):
+    id: int
 
     class Config:
-        orm_mode = True
-
-
-class CategoryCreate(BaseModel):
-    name: str
+        orm_mode = True  # Позволяет работать с данными ORM
