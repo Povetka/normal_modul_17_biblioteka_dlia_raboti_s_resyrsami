@@ -9,5 +9,6 @@ class Product(Base):
     name = Column(String, index=True)  # Название продукта
     slug = Column(String, unique=True, index=True)  # Человекочитаемый URL
     category_id = Column(Integer, ForeignKey("categories.id"))  # Связь с Category
+    description = Column(String, nullable=True)  # Новое поле
     # Определяем отношение "многие к одному"
     category = relationship("Category", back_populates="products")
